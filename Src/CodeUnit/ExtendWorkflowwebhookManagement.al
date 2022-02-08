@@ -1,4 +1,4 @@
-codeunit 50100 "Ext. Workflow Webhook Mgmt"
+codeunit 50108 "Ext. Workflow Webhook Mgmt"
 {
     procedure GetCanRequestAndCanCancelJournalBatch(ItemJournalBatch: Record "Item Journal Batch"; var CanRequestBatchApproval: Boolean; var CanCancelBatchApproval: Boolean; var CanRequestLineApprovals: Boolean)
     var

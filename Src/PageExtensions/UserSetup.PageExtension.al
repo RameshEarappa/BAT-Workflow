@@ -8,6 +8,10 @@ pageextension 50100 UserSetupExt extends "User Setup"
             {
                 ApplicationArea = All;
             }
+            field("POST Whse Phy Inv Jnl_LT"; Rec."POST Whse Phy Inv Jnl_LT")
+            {
+                ApplicationArea = All;
+            }
         }
     }
     actions

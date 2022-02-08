@@ -15,5 +15,10 @@ tableextension 50105 "Extend Warehouse Jnl" extends "Warehouse Journal Line"
             DataClassification = ToBeClassified;
             OptionMembers = Open;
         }
+        field(50253; "Request Approved LT"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Request Approved';
+        }
     }
 }
