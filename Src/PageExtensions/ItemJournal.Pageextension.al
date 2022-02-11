@@ -1,5 +1,15 @@
 pageextension 50117 "Item Journal Ext" extends "Item Journal"
 {
+    layout
+    {
+        addafter(Description)
+        {
+            field(Status; Rec.Status)
+            {
+                ApplicationArea = All;
+            }
+        }
+    }
     actions
     {
         addafter("P&osting")
@@ -58,23 +68,25 @@ pageextension 50117 "Item Journal Ext" extends "Item Journal"
                         Message('The approval request for the record has been canceled.');
                     end;
                 }
-                action(Approvals)
-                {
-                    AccessByPermission = TableData "Approval Entry" = R;
-                    ApplicationArea = Suite;
-                    Caption = 'Approvals';
-                    Image = Approvals;
-                    Promoted = true;
-                    PromotedCategory = Category7;
-                    ToolTip = 'View a list of the records that are waiting to be approved. For example, you can see who requested the record to be approved, when it was sent, and when it is due to be approved.';
+                // action(Approvals)
+                // {
+                //     AccessByPermission = TableData "Approval Entry" = R;
+                //     ApplicationArea = Suite;
+                //     Caption = 'Approvals';
+                //     Image = Approvals;
+                //     Promoted = true;
+                //     PromotedCategory = Category7;
+                //     ToolTip = 'View a list of the records that are waiting to be approved. For example, you can see who requested the record to be approved, when it was sent, and when it is due to be approved.';
 
-                    trigger OnAction()
-                    var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-                    begin
-                        ApprovalsMgmt.RunWorkflowEntriesPage(Rec.RecordId(), DATABASE::"Item Journal Line", Enum::"Approval Document Type"::" ", Rec."No.");
-                    end;
-                }
+                //     trigger OnAction()
+                //     var
+                //         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                //         ItemJournalLine: Record "Item Journal Line";
+                //     begin
+                //         GetCurrentlySelectedLines(ItemJournalLine);
+                //         ApprovalsMgmt.RunWorkflowEntriesPage(Rec.RecordId(), DATABASE::"Item Journal Line", Enum::"Approval Document Type"::" ", Rec."No.");
+                //     end;
+                // }
             }
         }
         modify(Post)

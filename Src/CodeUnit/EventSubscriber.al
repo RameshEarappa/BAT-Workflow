@@ -1,4 +1,4 @@
-codeunit 50107 "Event Subscriber"
+codeunit 50101 "Event Subscriber"
 {
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterValidateEvent', 'Sell-to Customer No.', false, false)]

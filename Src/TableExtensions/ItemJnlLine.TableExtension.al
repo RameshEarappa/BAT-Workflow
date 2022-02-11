@@ -2,7 +2,7 @@ tableextension 50102 "Extend Item Jnl. Line" extends "Item Journal Line"
 {
     fields
     {
-        field(50250; Status; Enum "Physical Inventory Journal WF")
+        field(50250; Status; Enum "WF Status")
         {
             DataClassification = ToBeClassified;
         }

@@ -71,25 +71,25 @@ pageextension 50116 "WareHouseItemJournal Ext" extends "Whse. Item Journal"
                         Message('The approval request for the record has been canceled.');
                     end;
                 }
-                action(Approvals)
-                {
-                    AccessByPermission = TableData "Approval Entry" = R;
-                    ApplicationArea = Suite;
-                    Caption = 'Approvals';
-                    Image = Approvals;
-                    //Promoted = true;
-                    //PromotedCategory = Category7;
-                    ToolTip = 'View a list of the records that are waiting to be approved. For example, you can see who requested the record to be approved, when it was sent, and when it is due to be approved.';
+                // action(Approvals)
+                // {
+                //     AccessByPermission = TableData "Approval Entry" = R;
+                //     ApplicationArea = Suite;
+                //     Caption = 'Approvals';
+                //     Image = Approvals;
+                //     //Promoted = true;
+                //     //PromotedCategory = Category7;
+                //     ToolTip = 'View a list of the records that are waiting to be approved. For example, you can see who requested the record to be approved, when it was sent, and when it is due to be approved.';
 
-                    trigger OnAction()
-                    var
-                        ApprovalsMgmt: Codeunit "Approvals Mgmt.";
-                        WarehouseJnl: Record "Warehouse Journal Line";
-                    begin
-                        GetCurrentlySelectedLines(WarehouseJnl);
-                        ApprovalsMgmt.RunWorkflowEntriesPage(WarehouseJnl.RecordId(), DATABASE::"Warehouse Journal Line", Enum::"Approval Document Type"::" ", WarehouseJnl."Whse. Document No.");
-                    end;
-                }
+                //     trigger OnAction()
+                //     var
+                //         ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                //         WarehouseJnl: Record "Warehouse Journal Line";
+                //     begin
+                //         GetCurrentlySelectedLines(WarehouseJnl);
+                //         ApprovalsMgmt.RunWorkflowEntriesPage(WarehouseJnl.RecordId(), DATABASE::"Warehouse Journal Line", Enum::"Approval Document Type"::" ", WarehouseJnl."Whse. Document No.");
+                //     end;
+                // }
             }
         }
         modify("&Register")
