@@ -160,7 +160,6 @@ pageextension 50117 "Item Journal Ext" extends "Item Journal"
         IsCancel: Boolean;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         StyleText: Text;
-        SetEditable: Boolean;
 
     local procedure GetCurrentlySelectedLines(var RecItemJnlLine: Record "Item Journal Line"): Boolean
     begin

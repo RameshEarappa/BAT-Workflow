@@ -154,7 +154,10 @@ codeunit 50106 "Customized Workflow ItemJnl"
     var
         ItemJnline: Record "Item Journal Line";
     begin
-        ItemJnline.SetRange("Document No.", Format(RecRef.Field(50)));
+        Clear(ItemJnline);
+        ItemJnline.SetRange("Journal Template Name", Format(RecRef.Field(1)));
+        ItemJnline.SetRange("Journal Batch Name", Format(RecRef.Field(2)));
+        ItemJnline.SetRange("Document No.", Format(RecRef.Field(7)));
         if ItemJnline.FindFirst() then
             IsHandle := true;
     end;

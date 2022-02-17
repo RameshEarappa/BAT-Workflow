@@ -154,9 +154,11 @@ codeunit 50105 "Customized Workflow LT"
     var
         WarehouseJournalLine: Record "Warehouse Journal Line";
     begin
+        Clear(WarehouseJournalLine);
         WarehouseJournalLine.SetRange("Journal Template Name", Format(RecRef.Field(1)));
         WarehouseJournalLine.SetRange("Journal Batch Name", Format(RecRef.Field(2)));
-        WarehouseJournalLine.SetRange("Whse. Document No.", Format(RecRef.Field(50)));
+        WarehouseJournalLine.SetRange("Location Code", Format(RecRef.Field(5)));
+        //WarehouseJournalLine.SetRange("Whse. Document No.", Format(RecRef.Field(50)));
         if WarehouseJournalLine.FindFirst() then
             IsHandle := true;
     end;
