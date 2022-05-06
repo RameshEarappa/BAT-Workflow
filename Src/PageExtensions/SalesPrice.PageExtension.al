@@ -7,13 +7,56 @@ pageextension 50118 "Sales Price Ext" extends "Sales Prices"
             field(Status; Rec.Status)
             {
                 ApplicationArea = All;
+                Editable = false;
             }
+        }
+        modify("Sales Type")
+        {
+            Editable = SetEditable;
+        }
+        modify("Sales Code")
+        {
+            Editable = SetEditable;
+        }
+        modify("Item No.")
+        {
+            Editable = SetEditable;
+        }
+        modify("Unit of Measure Code")
+        {
+            Editable = SetEditable;
+        }
+        modify("Minimum Quantity")
+        {
+            Editable = SetEditable;
         }
         modify("Unit Price")
         {
             Editable = SetUnitprice;
         }
-
+        modify("Starting Date")
+        {
+            Editable = SetEditable;
+        }
+        modify("Ending Date")
+        {
+            trigger OnAfterValidate()
+            begin
+                if Rec.Status = Rec.Status::Approved then begin
+                    Rec.Status := Rec.Status::Open;
+                    Rec.Modify(true);
+                    SetControl();
+                end;
+            end;
+        }
+        modify(Description)
+        {
+            Editable = SetEditable;
+        }
+        modify("List Name")
+        {
+            Editable = SetEditable;
+        }
     }
 
     actions
@@ -74,19 +117,19 @@ pageextension 50118 "Sales Price Ext" extends "Sales Prices"
     }
     trigger OnAfterGetCurrRecord()
     begin
-        if Rec.Status = Rec.Status::Approved then
-            SetUnitprice := false
+        if Rec.Status = Rec.Status::Open then
+            SetEditable := true
         else
-            SetUnitprice := true;
+            SetEditable := false;
     end;
 
     trigger OnAfterGetRecord()
     begin
         SetControl();
-        if Rec.Status = Rec.Status::Approved then
-            SetUnitprice := false
+        if Rec.Status = Rec.Status::Open then
+            SetEditable := true
         else
-            SetUnitprice := true;
+            SetEditable := false;
     end;
 
     trigger OnOpenPage()
@@ -96,6 +139,7 @@ pageextension 50118 "Sales Price Ext" extends "Sales Prices"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
+        Rec.Status := Rec.Status::Open;
         SetControl();
     end;
 
@@ -105,6 +149,7 @@ pageextension 50118 "Sales Price Ext" extends "Sales Prices"
         IsCancel: Boolean;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         StyleText: Text;
+        SetEditable: Boolean;
         SetUnitprice: Boolean;
 
     local procedure SetControl()
@@ -117,17 +162,20 @@ pageextension 50118 "Sales Price Ext" extends "Sales Prices"
             IsCancel := false;
             PageEditable := true;
             StyleText := '';
+            SetUnitprice := true;
         end else
             if Rec."Status" = Rec."Status"::"Pending For Approval" then begin
                 IsSendRequest := false;
                 IsCancel := true;
                 PageEditable := false;
                 StyleText := 'Ambiguous';
+                SetUnitprice := false;
             end else begin
                 IsSendRequest := false;
                 IsCancel := false;
                 PageEditable := false;
                 StyleText := 'Favorable';
+                SetUnitprice := false;
             end;
         CurrPage.Update(false);
     end;

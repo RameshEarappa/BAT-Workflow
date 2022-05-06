@@ -24,7 +24,15 @@ pageextension 50113 "Requests to Approve Ext" extends "Requests to Approve"
             {
                 ApplicationArea = All;
             }
+            field("Item No_LT"; Rec."Item No_LT")
+            {
+                ApplicationArea = All;
+            }
             field(Description; Rec.Description)
+            {
+                ApplicationArea = All;
+            }
+            field(Quantity_LT; Rec.Quantity_LT)
             {
                 ApplicationArea = All;
             }

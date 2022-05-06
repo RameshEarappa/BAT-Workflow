@@ -208,7 +208,6 @@ pageextension 50104 "Cash Recp Journal_Ext" extends "Cash Receipt Journal"
         BackgroundErrorCheck: Boolean;
         ShowAllLinesEnabled: Boolean;
         JournalErrorsMgt: Codeunit "Journal Errors Mgt.";
-        SingalInstanceCU: Codeunit SingalInstanceGnlJnlLine;
         SetVisible: Boolean;
         SetEditable: Boolean;
 

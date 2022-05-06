@@ -154,10 +154,15 @@ codeunit 50108 "Customized Workflow SalesPrice"
     var
         SalesPriceL: Record "Sales Price";
     begin
-        Clear(SalesPriceL);
-        SalesPriceL.SetRange("Item No.", Format(RecRef.Field(1)));
-        if SalesPriceL.FindFirst() then
-            IsHandle := true;
+        case RecRef.Number of
+            DATABASE::"Sales Price":
+                begin
+                    Clear(SalesPriceL);
+                    SalesPriceL.SetRange("Item No.", Format(RecRef.Field(1)));
+                    if SalesPriceL.FindFirst() then
+                        IsHandle := true;
+                end;
+        end;
     end;
     //***********************End***********************************
 

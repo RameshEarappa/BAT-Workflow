@@ -29,9 +29,19 @@ tableextension 50108 "Approval Entry Ext" extends "Approval Entry"
             Caption = 'Bal.Account No.';
             DataClassification = ToBeClassified;
         }
-        field(50106; Description; Text[50])
+        field(50106; Description; Text[100])
         {
             Caption = 'Description';
+            DataClassification = ToBeClassified;
+        }
+        field(50107; "Item No_LT"; Code[20])
+        {
+            Caption = 'Item No.';
+            DataClassification = ToBeClassified;
+        }
+        field(50108; "Quantity_LT"; Decimal)
+        {
+            Caption = 'Quantity';
             DataClassification = ToBeClassified;
         }
     }

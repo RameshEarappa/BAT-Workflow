@@ -36,5 +36,4 @@ codeunit 50100 "Init Workflow ItemJnl"
     var
         WFMngt: Codeunit "Workflow Management";
         Text001: TextConst ENU = 'No Workflows Enabled';
-
 }
